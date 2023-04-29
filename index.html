@@ -51,16 +51,38 @@ let operator;
 let number2;
 
 console.log();
+
 //3  a function that takes an operator and 2 numbers
 
 
 function operate(numberx,numbery,opeatorz) {
 
- return   add(numberx,numbery);
+    opeatorz = prompt('operator');
+    numberx = +prompt('num1');
+    numbery = +prompt('num2');
+
+    if (opeatorz === '+') {
+      return   add(numberx,numbery);
+   
+    }
+
+    if (opeatorz === '-') {
+      return   substract(numberx,numbery);
+   
+    }
+    if (opeatorz === '*') {
+      return   multiply(numberx,numbery);
+   
+    }
+    if (opeatorz === '/') {
+      return   divide(numberx,numbery);
+   
+    }
+
 
 }
 
-console.log(operate(1,4));
+console.log(operate());
 
 
 
