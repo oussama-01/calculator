@@ -13,29 +13,29 @@
 
 <div class="calculator">
 
-  <div class="display">123456</div>
+  <div class="display">0</div>
 
   <div class="buttons1">
-    <button>1</button>
-    <button>2</button>
-    <button>3</button>
+    <button class="digits">1</button>
+    <button class="digits">2</button>
+    <button class="digits">3</button>
   </div>
   <div class="buttons2">
-    <button>4</button>
-    <button>5</button>
-    <button>6</button>
+    <button class="digits">4</button>
+    <button class="digits">5</button>
+    <button class="digits">6</button>
   </div>
   <div class="buttons3">
-    <button>7</button>
-    <button>8</button>
-    <button>9</button>
+    <button class="digits">7</button>
+    <button class="digits">8</button>
+    <button class="digits">9</button>
   </div>
 
   <div class="operators">
-    <button>+</button>
-    <button>-</button>
-    <button>*</button>
-    <button>/</button>
+    <button class="operator" id ="plus">+</button>
+    <button class="operator" >-</button>
+    <button class="operator">*</button>
+    <button class="operator">/</button>
 
   </div>
 
@@ -44,6 +44,7 @@
 
 </div>
 
+<!-- ------- SCRIPT ------- -->
 <script>
 
 //1 Basic operations
@@ -65,8 +66,6 @@ function multiply(a,b) {
     return a*b;
 }
 
-console.log(add(1,2), substract(7,1), multiply(3,8), divide(9,3) );
-
 // Divide
 
 function divide(a,b) {
@@ -79,16 +78,12 @@ let number1;
 let operator;
 let number2;
 
-console.log();
+
+
 
 //3  a function that takes an operator and 2 numbers
 
-
 function operate(numberx,numbery,opeatorz) {
-
-/*     opeatorz = prompt('operator');
-    numberx = +prompt('num1');
-    numbery = +prompt('num2'); */
 
     if (opeatorz === '+') {
       return   add(numberx,numbery);
@@ -108,12 +103,78 @@ function operate(numberx,numbery,opeatorz) {
    
     }
 
-
 }
 
+//5 A function that show the numbers clicked
 
-console.log(operate());
 
+const display = document.querySelector('.display');
+
+const digits = document.querySelectorAll('.digits');
+
+let displayValue;
+
+
+digits.forEach(digit => digit.addEventListener('click', function() {
+
+  display.textContent += digit.textContent;
+ 
+  displayValue = +display.textContent;
+
+}))
+
+
+
+// 6
+
+const plus = document.querySelector('#plus');
+
+const equals = document.querySelector('.equals')
+
+plus.addEventListener('click', function() {
+number1 = displayValue;
+display.textContent = 0;
+
+operator = '+';
+
+
+
+
+equals.addEventListener('click', function() {
+  number2 = displayValue;
+
+console.log(number1,number2, operator);
+
+display.textContent = operate(number1, number2, operator);
+
+
+})
+
+})
+
+/* 
+const operators = document.querySelectorAll('.operator');
+operators.forEach(operator => operator.addEventListener('click', function () {
+  operand1 = displayValue;
+display.textContent = 0;
+
+operation = operator.textContent;
+
+console.log(operation);
+
+equals.addEventListener('click', function() {
+  operand2 = displayValue;
+
+
+
+  console.log(operand1, operand2, operation);
+
+display.textContent = operate(operand1, operand2, operation);
+
+})
+
+}))
+ */
 
 
 
@@ -121,3 +182,8 @@ console.log(operate());
 </script> 
 </body>
 </html>
+
+<!-- 
+
+
+ -->
