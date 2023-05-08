@@ -10,12 +10,15 @@
 </head>
 <body>
    
-
 <div class="calculator">
+
+  <div class="display2"></div> <!-- for the next operation -->
 
   <div class="display">0</div>
 
+
   <div class="buttons1">
+    <button class="digits">0</button>
     <button class="digits">1</button>
     <button class="digits">2</button>
     <button class="digits">3</button>
@@ -47,10 +50,9 @@
 <!-- ------- SCRIPT ------- -->
 <script>
 
-//1 Basic operations
+// 1 Basic operations
 
 // Add
-
 function add(a,b) {
     return a+b;
 }
@@ -61,58 +63,52 @@ function substract(a,b) {
 }
 
 // Multiply
-
 function multiply(a,b) {
     return a*b;
 }
 
 // Divide
-
 function divide(a,b) {
     return a/b;
 }
 
-//2 creating variables for an operation
+// 2 creating variables for an operation
 
-let number1;
+let number1 ;
 let operator;
-let number2;
+let number2 ;
 
 
-
-
-//3  a function that takes an operator and 2 numbers
+// 3 a function that takes an operator and 2 numbers
 
 function operate(numberx,numbery,opeatorz) {
 
     if (opeatorz === '+') {
-      return   add(numberx,numbery);
-   
+      return add(numberx,numbery);  
     }
 
     if (opeatorz === '-') {
-      return   substract(numberx,numbery);
-   
+      return substract(numberx,numbery); 
     }
+
     if (opeatorz === '*') {
-      return   multiply(numberx,numbery);
-   
+      return multiply(numberx,numbery);
     }
+
     if (opeatorz === '/') {
-      return   divide(numberx,numbery);
-   
+      return divide(numberx,numbery);
     }
 
 }
 
-//5 A function that show the numbers clicked
+// 5 A function that show the numbers clicked
 
 
 const display = document.querySelector('.display');
 
 const digits = document.querySelectorAll('.digits');
 
-let displayValue;
+let displayValue ;
 
 
 digits.forEach(digit => digit.addEventListener('click', function() {
@@ -127,54 +123,84 @@ digits.forEach(digit => digit.addEventListener('click', function() {
 
 // 6
 
-const plus = document.querySelector('#plus');
-
-const equals = document.querySelector('.equals')
-
-plus.addEventListener('click', function() {
-number1 = displayValue;
-display.textContent = 0;
-
-operator = '+';
-
-
-
-
-equals.addEventListener('click', function() {
-  number2 = displayValue;
-
-console.log(number1,number2, operator);
-
-display.textContent = operate(number1, number2, operator);
-
-
-})
-
-})
-
-/* 
 const operators = document.querySelectorAll('.operator');
-operators.forEach(operator => operator.addEventListener('click', function () {
-  operand1 = displayValue;
+const equals = document.querySelector('.equals');
+const display2 = document.querySelector('.display2');
+
+
+let i= 0;
+
+operators.forEach(operatorx => operatorx.addEventListener('click', function () {
+
+i++;
+
+if (i === 1) {
+operator = operatorx.textContent;
+
+number1  = displayValue;
+
 display.textContent = 0;
 
-operation = operator.textContent;
+console.log (number1,operator, number2,i);
 
-console.log(operation);
+}
 
-equals.addEventListener('click', function() {
-  operand2 = displayValue;
+else { 
+   
+
+  number2  = displayValue;
+
+
+number1 = operate(number1,number2,operator);
 
 
 
-  console.log(operand1, operand2, operation);
+operator = operatorx.textContent;
 
-display.textContent = operate(operand1, operand2, operation);
+display2.textContent = number1 + operator;
 
-})
+display.textContent = 0;
+
+console .log(number1,operator,number2,i);
+
+}
+ 
+
 
 }))
- */
+
+equals.addEventListener('click', function() {
+
+  number2 = displayValue;
+
+
+  console.log(number1, operator, number2 );
+
+display.textContent = operate(number1, number2, operator).toFixed(2);
+
+})
+
+
+
+
+
+
+
+// Create a clear everything function
+
+const clear = document.querySelector('.clear');
+
+clear.addEventListener('click', function () {
+
+display.textContent =0;
+number1 = 0;
+number2 = 0;
+displayValue = 0;
+i=0;
+console.log(number1, number2, displayValue,i)
+
+})
+
 
 
 
