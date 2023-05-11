@@ -35,7 +35,7 @@
   </div>
 
   <div class="operators">
-    <button class="operator" id ="plus">+</button>
+    <button class="operator">+</button>
     <button class="operator" >-</button>
     <button class="operator">*</button>
     <button class="operator">/</button>
@@ -130,41 +130,41 @@ const display2 = document.querySelector('.display2');
 
 let i= 0;
 
-operators.forEach(operatorx => operatorx.addEventListener('click', function () {
+  operators.forEach(operatorx => operatorx.addEventListener('click', function () {
 
-i++;
+    i++;
 
-if (i === 1) {
-operator = operatorx.textContent;
+    if (i === 1) {
+      operator = operatorx.textContent;
 
-number1  = displayValue;
+      number1 = displayValue;
 
-display.textContent = 0;
+      display.textContent = 0;
 
-console.log (number1,operator, number2,i);
+      console.log(number1, operator, number2, i);
 
-}
+    }
 
-else { 
-   
-
-  number2  = displayValue;
+    else {
 
 
-number1 = operate(number1,number2,operator);
+      number2 = displayValue;
+
+
+      number1 = operate(number1, number2, operator);
 
 
 
-operator = operatorx.textContent;
+      operator = operatorx.textContent;
 
-display2.textContent = number1 + operator;
+      display2.textContent = number1 + operator;
 
-display.textContent = 0;
+      display.textContent = 0;
 
-console .log(number1,operator,number2,i);
+      console.log(number1, operator, number2, i);
 
-}
- 
+    }
+
 
 
 }))
