@@ -167,14 +167,19 @@ let i= 0;
 
 
   equals.addEventListener('click', function () {
+    
 
-    number2 = +displayValue;
+number2 = +displayValue;
 
-if (number2 === undefined) return alert('Please enter the operand');
+/* number2 = +display.textContent; */
+
+console.log(number1, operator, number2);
+    if (number1 === undefined) return;
+    if (number2 === undefined ) return;
+    if ( operator === '' ) return;
 
     if (operator ==='/' && number2 === 0 ) return alert('Divison by zero is undefined' );
 
-    console.log(number1, operator, number2);
 
     display2.textContent = number1 + operator + number2;
 
