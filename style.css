@@ -1,16 +1,11 @@
-
-
 * {
     border: 1px solid #c37a4a;
 }
 
-html {
-   
-}
+html {}
 
 body {
-
-font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     display: flex;
     justify-content: center;
 }
@@ -21,12 +16,10 @@ font-family: Arial, Helvetica, sans-serif;
 }
 
 .display2 {
- 
     font-size: 1.3rem;
 }
 
 .display {
-
     font-size: 1.5rem;
     padding: 1rem;
 
@@ -41,5 +34,9 @@ button {
 
     border-radius: 10%;
 
-    width: 4rem;
+    width: 5rem;
+}
+
+button:active {
+    background-color: crimson;
 }
